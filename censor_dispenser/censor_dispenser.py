@@ -18,14 +18,32 @@ def censor_email_one(phrase):
     censored_text = ""
 
     for line in content.split("\n"):
-        if phrase in line:
+        if phrase.lower() in line.lower():
             line = line.replace(phrase, "@")
-            censored_text += line + "\n"
-        else:
-            censored_text += line + "\n"
+        censored_text += line + "\n"
+
+    return censored_text
+
+
+def censor_email_two(phrases):
+    with open("c:/Users/nishu/Documents/Codecademy_Projects/censor_dispenser/email_two.txt", "r") as email_two:
+        content = email_two.read()
+
+    censored_text = ""
+
+    for line in content.split("\n"):
+        for phrase in phrases:
+            if phrase.lower() in line.lower():
+                line = line.replace(phrase, "@")
+        censored_text += line + "\n"
 
     return censored_text
 
 
 # Test censor one
-print(censor_email_one("learning algorithms"))
+# print(censor_email_one("learning algorithms"))
+
+# Test censor two
+phrases_lst = ["she", "personality matrix", "sense of self", "self-preservation", "learning algorithm", "her",
+               "herself"]
+print(censor_email_two(phrases_lst))
