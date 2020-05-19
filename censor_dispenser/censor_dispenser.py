@@ -6,14 +6,15 @@
 # email_four = open("c:/Users/nishu/Documents/Codecademy_Projects/censor_dispenser/email_four.txt", "r").read()
 
 
-def censor_email_one(phrase):
+def censor_email_one(phrase, filename):
     """
     Removes phrase or word from email text file.
+    :param filename: file to censor
     :param phrase: word or phrase to remove from file
     :return: Return censored text
     :rtype: STR
     """
-    with open("c:/Users/nishu/Documents/Codecademy_Projects/censor_dispenser/email_one.txt", "r") as email_one:
+    with open(filename, "r") as email_one:
         content = email_one.read()
 
     censored_text = ""
@@ -26,14 +27,15 @@ def censor_email_one(phrase):
     return censored_text
 
 
-def censor_email_two(phrases):
+def censor_email_two(phrases, filename):
     """
     Removes all phrases or words from list
+    :param filename: file to censor
     :param phrases: list of phrases or words to remove
     :return: Return censored text
     :rtype: STR
     """
-    with open("c:/Users/nishu/Documents/Codecademy_Projects/censor_dispenser/email_two.txt", "r") as email_two:
+    with open(filename, "r") as email_two:
         content = email_two.read()
 
     censored_text = ""
@@ -47,10 +49,19 @@ def censor_email_two(phrases):
     return censored_text
 
 
+
+
+
 # Test censor one
-# print(censor_email_one("learning algorithms"))
+# print(censor_email_one("learning algorithms","email_one.txt"))
 
 # Test censor two
-# phrases_lst = ["she", "personality matrix", "sense of self", "self-preservation", "learning algorithm",
-# "her", "herself"]
-# print(censor_email_two(phrases_lst))
+proprietary_terms = ["she", "personality matrix", "sense of self", "self-preservation", "learning algorithm", "her",
+                     "herself"]
+# print(censor_email_two(proprietary_terms,"email_two.txt"))
+
+# Test censor three
+negative_words = ["concerned", "behind", "danger", "dangerous", "alarming", "alarmed", "out of control", "help",
+                  "unhappy", "bad", "upset", "awful", "broken", "damage", "damaging", "dismal", "distressed",
+                  "distressed", "concerning", "horrible", "horribly", "questionable"]
+# print(censor_email_three(proprietary_terms, negative_words, "email_three.txt"))
