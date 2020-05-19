@@ -78,6 +78,33 @@ def censor_email_three(phrases, negative_words, filename):
     return " ".join(word_lst)
 
 
+def censor_email_four(phrases, negative_words, filename):
+    """
+    Removes all phrases or words from list and words that come before and after
+    :param phrases: list of phrases or words to remove
+    :param negative_words: list of negative phrases or words to remove
+    :param filename: file to censor
+    :return: Return censored text
+    :rtype: STR
+    """
+    with open(filename, "r") as email_four:
+        content = email_four.read()
+
+    content = censor_email_three(phrases, negative_words, filename)
+
+    word_lst = []
+
+    for word in content.split():
+        word_lst.append(word)
+
+    for i in range(len(word_lst)):
+        if "@" in word_lst[i]:
+            word_lst[i - 1] = "#"
+            word_lst[i + 1] = "#"
+
+    return " ".join(word_lst)
+
+
 # Test censor one
 # print(censor_email_one("learning algorithms","email_one.txt"))
 
@@ -90,4 +117,7 @@ proprietary_terms = ["she", "personality matrix", "sense of self", "self-preserv
 negative_words = ["concerned", "behind", "danger", "dangerous", "alarming", "alarmed", "out of control", "help",
                   "unhappy", "bad", "upset", "awful", "broken", "damage", "damaging", "dismal", "distressed",
                   "distressed", "concerning", "horrible", "horribly", "questionable"]
-print(censor_email_three(proprietary_terms, negative_words, "email_three.txt"))
+# print(censor_email_three(proprietary_terms, negative_words, "email_three.txt"))
+
+# Test censor four
+# print(censor_email_four(proprietary_terms, negative_words, "email_four.txt"))
