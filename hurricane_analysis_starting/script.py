@@ -75,12 +75,13 @@ def update_damages():
         if damage == "Damages not recorded":
             new_damages.append(damage)
         else:
-            new_damages.append(float(convert_prefix[damage[-1]] * float(damage[:-1])))
+            new_damages.append(convert_prefix[damage[-1]] * float(damage[:-1]))
 
     return new_damages
 
+
 # Test update_damages()
-# print(update_damages())
+print(update_damages())
 
 # write your construct hurricane dictionary function here:
 
