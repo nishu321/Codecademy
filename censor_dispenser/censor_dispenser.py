@@ -49,7 +49,33 @@ def censor_email_two(phrases, filename):
     return censored_text
 
 
+def censor_email_three(phrases, negative_words, filename):
+    """
+    Removes all phrases or words from list if they occur more than twice
+    :param phrases: list of phrases or words to remove
+    :param negative_words: list of negative phrases or words to remove
+    :param filename: file to censor
+    :return: Return censored text
+    :rtype: STR
+    """
+    with open(filename, "r") as email_three:
+        content = email_three.read()
 
+    content = censor_email_two(phrases, filename)
+
+    word_lst = []
+
+    for word in content.split():
+        word_lst.append(word)
+
+    counter = 0
+    for i in range(len(word_lst)):
+        if word_lst[i].lower() in negative_words:
+            counter += 1
+            if counter > 2:
+                word_lst[i] = word_lst[i].lower().replace(word_lst[i].lower(), "@")
+
+    return " ".join(word_lst)
 
 
 # Test censor one
@@ -64,4 +90,4 @@ proprietary_terms = ["she", "personality matrix", "sense of self", "self-preserv
 negative_words = ["concerned", "behind", "danger", "dangerous", "alarming", "alarmed", "out of control", "help",
                   "unhappy", "bad", "upset", "awful", "broken", "damage", "damaging", "dismal", "distressed",
                   "distressed", "concerning", "horrible", "horribly", "questionable"]
-# print(censor_email_three(proprietary_terms, negative_words, "email_three.txt"))
+print(censor_email_three(proprietary_terms, negative_words, "email_three.txt"))
