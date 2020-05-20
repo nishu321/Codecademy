@@ -58,10 +58,10 @@ deaths = [90, 4000, 16, 3103, 179, 184, 408, 682, 5, 1023, 43, 319, 688, 259, 37
 
 
 # write your update damages function here:
-def update_damages(damages_lst):
+def update_damages(damages):
     """
     Convert list of values to float values
-    :param damages_lst: list of values to convert
+    :param damages: list of values to convert
     :return: List of values as floats
     :rtype: list
     """
@@ -72,7 +72,7 @@ def update_damages(damages_lst):
 
     new_damages = []
 
-    for damage in damages_lst:
+    for damage in damages:
         if damage == "Damages not recorded":
             new_damages.append(damage)
         else:
