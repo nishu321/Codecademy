@@ -102,7 +102,7 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
     hurricane_info = {}
     updated_damages_lst = update_damages(damages)
 
-    for i in range(len(names)):
+    for i in range(34):
         hurricane_info[names[i]] = {
             "Name": names[i],
             "Month": months[i],
