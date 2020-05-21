@@ -168,7 +168,27 @@ def construct_dict_by_year(names, months, years, max_sustained_winds, areas_affe
 # print(construct_dict_by_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
 
 # write your count affected areas function here:
+def affected_areas(areas_affected):
+    """
+    Creates dict of count of areas affected by area
+    :param areas_affected: list of areas affected
+    :return: dict of area affected with number of times affected
+    :rtype: dict
+    """
+    areas_affected_count = {}
 
+    for areas in areas_affected:
+        for area in areas:
+            if area in areas_affected_count.keys():
+                areas_affected_count[area] += 1
+            else:
+                areas_affected_count[area] = 1
+
+    return areas_affected_count
+
+
+# Test affected_areas()
+# print(affected_areas(areas_affected))
 
 # write your find most affected area function here:
 
