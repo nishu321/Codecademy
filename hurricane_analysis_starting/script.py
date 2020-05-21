@@ -120,7 +120,52 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
 # print(construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
 
 # write your construct hurricane by year dictionary function here:
+def construct_dict_by_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths):
+    """
+    Creates a dictionary about hurricane information by year
+    :param names: names of the hurricanes
+    :param months: months in which the hurricanes occurred
+    :param years: years in which the hurricanes occurred
+    :param max_sustained_winds: maximum sustained winds (miles per hour) of the hurricanes
+    :param areas_affected:  list of different areas affected by each of the hurricanes
+    :param damages: list of damages in USD of each hurricane
+    :param deaths: list of deaths from each hurricane
+    :return: dictionary of hurricane information by year
+    :rtype: dict
+    """
+    hurricane_info_by_year = {}
+    updated_damages_lst = update_damages(damages)
 
+    for i in range(34):
+        if years[i] in hurricane_info_by_year.keys():
+            current_value = hurricane_info_by_year[years[i]]
+            current_value.append(
+                {
+                    "Name": names[i],
+                    "Month": months[i],
+                    "Year": years[i],
+                    "Max Sustained Wind": max_sustained_winds[i],
+                    "Areas Affected": areas_affected[i],
+                    "Damage": updated_damages_lst[i],
+                    "Deaths": deaths[i]
+                })
+            hurricane_info_by_year[years[i]] = current_value
+        else:
+            hurricane_info_by_year[years[i]] = [{
+                "Name": names[i],
+                "Month": months[i],
+                "Year": years[i],
+                "Max Sustained Wind": max_sustained_winds[i],
+                "Areas Affected": areas_affected[i],
+                "Damage": updated_damages_lst[i],
+                "Deaths": deaths[i]
+            }]
+
+    return hurricane_info_by_year
+
+
+# Test construct_dict_by_year()
+# print(construct_dict_by_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
 
 # write your count affected areas function here:
 
