@@ -118,6 +118,8 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
 
 # Test construct_dict()
 # print(construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
+hurricanes = construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths)
+
 
 # write your construct hurricane by year dictionary function here:
 def construct_dict_by_year(hurricane_dict):
@@ -140,7 +142,7 @@ def construct_dict_by_year(hurricane_dict):
 
 
 # Test construct_dict_by_year()
-# print(construct_dict_by_year(construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths)))
+# print(construct_dict_by_year(hurricanes))
 
 
 # Test construct_dict_by_year()
@@ -168,11 +170,30 @@ def affected_areas(hurricane_dict):
 
 
 # Test affected_areas()
-# print(affected_areas(construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths)))
+# print(affected_areas(hurricanes))
 
 
 # write your find most affected area function here:
+def most_affected_area(affected_area_dict):
+    """
+    Find the area most affected by hurricanes
+    :param affected_area_dict: dict of areas and count of how often they were affected
+    :return: string of area and its count that was most affected
+    :rtype: STR
+    """
+    max_count = 0
+    max_area = None
 
+    for area, affected_count in affected_area_dict.items():
+        if affected_count > max_count:
+            max_count = affected_count
+            max_area = area
+
+    return "The area of {0} was affected {1} times by hurricanes.".format(max_area, max_count)
+
+
+# Test most_affected_area()
+print(most_affected_area(affected_areas(hurricanes)))
 
 # write your greatest number of deaths function here:
 
