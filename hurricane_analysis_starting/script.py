@@ -168,23 +168,28 @@ def construct_dict_by_year(names, months, years, max_sustained_winds, areas_affe
 # print(construct_dict_by_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
 
 # write your count affected areas function here:
-def affected_areas(areas_affected):
+def affected_areas(hurricane_dict):
     """
-    Creates dict of count of areas affected by area
-    :param areas_affected: list of areas affected
-    :return: dict of area affected with number of times affected
+    Counts the number of times each area has been affected
+    :param hurricane_dict: dict of hurricanes information
+    :return: dict of areas and count of how many times they were affected
     :rtype: dict
     """
     areas_affected_count = {}
 
-    for areas in areas_affected:
-        for area in areas:
+    for hurricane, hurricane_info in hurricane_dict.items():
+        areas_affected_lst = hurricane_info['Areas Affected']
+        for area in areas_affected_lst:
             if area in areas_affected_count.keys():
                 areas_affected_count[area] += 1
             else:
                 areas_affected_count[area] = 1
 
     return areas_affected_count
+
+
+# Test affected_areas()
+print(affected_areas(construct_dict(names, months, years, max_sustained_winds, areas_affected, damages, deaths)))
 
 
 # Test affected_areas()
