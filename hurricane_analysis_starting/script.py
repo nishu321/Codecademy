@@ -99,11 +99,11 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
     :return: dictionary of hurricane information
     :rtype: dict
     """
-    hurricane_info = {}
+    hurricanes = {}
     updated_damages_lst = update_damages(damages)
 
     for i in range(34):
-        hurricane_info[names[i]] = {
+        hurricanes[names[i]] = {
             "Name": names[i],
             "Month": months[i],
             "Year": years[i],
@@ -113,7 +113,7 @@ def construct_dict(names, months, years, max_sustained_winds, areas_affected, da
             "Deaths": deaths[i]
         }
 
-    return hurricane_info
+    return hurricanes
 
 
 # Test construct_dict()
