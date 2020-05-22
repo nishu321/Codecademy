@@ -145,9 +145,6 @@ def construct_dict_by_year(hurricane_dict):
 # print(construct_dict_by_year(hurricanes))
 
 
-# Test construct_dict_by_year()
-# print(construct_dict_by_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
-
 # write your count affected areas function here:
 def affected_areas(hurricane_dict):
     """
@@ -193,10 +190,29 @@ def most_affected_area(affected_area_dict):
 
 
 # Test most_affected_area()
-print(most_affected_area(affected_areas(hurricanes)))
+# print(most_affected_area(affected_areas(hurricanes)))
 
 # write your greatest number of deaths function here:
+def greatest_deaths(hurricane_dict):
+    """
+    Find hurricane which caused most deaths
+    :param hurricane_dict: dict of hurricanes information
+    :return: string of hurricane and number of deaths caused by hurricane
+    :rtype: STR
+    """
+    max_death = 0
+    max_hurricane = None
 
+    for hurricane, hurricane_info in hurricane_dict.items():
+        if hurricane_info["Deaths"] > max_death:
+            max_death = hurricane_info["Deaths"]
+            max_hurricane = hurricane
+
+    return "{0} hurricane cause {1} deaths.".format(max_hurricane, max_death)
+
+
+# Test greatest_deaths()
+# print(greatest_deaths(hurricanes))
 
 # write your categorize by mortality function here:
 
