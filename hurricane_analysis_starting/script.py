@@ -133,8 +133,7 @@ def construct_dict_by_year(hurricane_dict):
 
     for hurricane, hurricane_info in hurricane_dict.items():
         if hurricane_info["Year"] in hurricane_info_by_year:
-            current_value = hurricane_info_by_year[hurricane_info["Year"]]
-            current_value.append(hurricane_info)
+            hurricane_info_by_year[hurricane_info["Year"]].append(hurricane_info)
         else:
             hurricane_info_by_year[hurricane_info["Year"]] = [hurricane_info]
 
@@ -142,7 +141,7 @@ def construct_dict_by_year(hurricane_dict):
 
 
 # Test construct_dict_by_year()
-# print(construct_dict_by_year(hurricanes))
+print(construct_dict_by_year(hurricanes))
 
 
 # write your count affected areas function here:
