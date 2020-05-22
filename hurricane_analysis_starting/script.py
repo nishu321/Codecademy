@@ -141,7 +141,7 @@ def construct_dict_by_year(hurricane_dict):
 
 
 # Test construct_dict_by_year()
-print(construct_dict_by_year(hurricanes))
+# print(construct_dict_by_year(hurricanes))
 
 
 # write your count affected areas function here:
@@ -206,7 +206,7 @@ def greatest_deaths(hurricane_dict):
             max_death = hurricane_info["Deaths"]
             max_hurricane = hurricane
 
-    return "{0} hurricane cause {1} deaths.".format(max_hurricane, max_death)
+    return "Hurricane {0} caused {1} deaths.".format(max_hurricane, max_death)
 
 
 # Test greatest_deaths()
@@ -216,6 +216,27 @@ def greatest_deaths(hurricane_dict):
 
 
 # write your greatest damage function here:
+def greatest_damage(hurricane_dict):
+    """
+    Find hurricane that caused the most damages in dollars
+    :param hurricane_dict: dict of hurricanes information
+    :return: string of hurricane and amount of damages caused by hurricane
+    :rtype: STR
+    """
+    max_damage = 0
+    max_hurricane = None
 
+    for hurricane, hurricane_info in hurricane_dict.items():
+        if hurricane_info["Damage"] == "Damages not recorded":
+            continue
+        elif hurricane_info["Damage"] > max_damage:
+            max_damage = hurricane_info["Damage"]
+            max_hurricane = hurricane
+
+    return "Hurricane {0} caused {1} dollars in damages.".format(max_hurricane, max_damage)
+
+
+# Test greatest_damage()
+print(greatest_damage(hurricanes))
 
 # write your categorize by damage function here:
