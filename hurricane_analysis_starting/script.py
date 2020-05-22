@@ -156,8 +156,7 @@ def affected_areas(hurricane_dict):
     areas_affected_count = {}
 
     for hurricane, hurricane_info in hurricane_dict.items():
-        areas_affected_lst = hurricane_info['Areas Affected']
-        for area in areas_affected_lst:
+        for area in hurricane_info['Areas Affected']:
             if area in areas_affected_count.keys():
                 areas_affected_count[area] += 1
             else:
