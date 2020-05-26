@@ -272,3 +272,37 @@ def greatest_damage(hurricane_dict):
 # print(greatest_damage(hurricanes))
 
 # write your categorize by damage function here:
+def damage(hurricane_dict):
+    """
+    Create new dict with key as damage scale and value as list of dict hurricanes
+    :param hurricane_dict: dict of hurricanes information
+    :return: Return dict of damage scale and hurricanes that belong to that scale
+    :rtype: dict
+    """
+    damage_scale = {
+        0: 0,
+        1: 100000000,
+        2: 1000000000,
+        3: 10000000000,
+        4: 50000000000
+    }
+
+    damage_dict = {}
+
+    damage_value = 0
+    for hurricane, hurricane_info in hurricane_dict.items():
+        if hurricane_info["Damage"] == "Damages not recorded":
+            continue
+        for scale, dollars in damage_scale.items():
+            if hurricane_info["Damage"] >= dollars:
+                damage_value = scale + 1
+        if damage_value in damage_dict.keys():
+            damage_dict[damage_value].append(hurricane_info)
+        else:
+            damage_dict[damage_value] = [hurricane_info]
+
+    return damage_dict
+
+
+# Test damage()
+# print(damage(hurricanes))
