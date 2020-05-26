@@ -213,6 +213,38 @@ def greatest_deaths(hurricane_dict):
 # print(greatest_deaths(hurricanes))
 
 # write your categorize by mortality function here:
+def mortality(hurricane_dict):
+    """
+    Creates a new dict with mortality scale as key and value as a list of dict of hurricanes
+    :param hurricane_dict: dict of hurricanes information
+    :return: Return dict of mortality and all hurricanes that belong to that mortality scale
+    :rtype: dict
+    """
+    mortality_scale = {
+        0: 0,
+        1: 100,
+        2: 500,
+        3: 1000,
+        4: 10000
+    }
+
+    mortality_dict = {}
+
+    mortality_value = 0
+    for hurricane, hurricane_info in hurricane_dict.items():
+        for mortality, scale in mortality_scale.items():
+            if hurricane_info["Deaths"] >= scale:
+                mortality_value = mortality + 1
+        if mortality_value in mortality_dict.keys():
+            mortality_dict[mortality_value].append(hurricane_info)
+        else:
+            mortality_dict[mortality_value] = [hurricane_info]
+
+    return mortality_dict
+
+
+# Test greatest_deaths()
+# print(mortality(hurricanes))
 
 
 # write your greatest damage function here:
@@ -237,6 +269,6 @@ def greatest_damage(hurricane_dict):
 
 
 # Test greatest_damage()
-print(greatest_damage(hurricanes))
+# print(greatest_damage(hurricanes))
 
 # write your categorize by damage function here:
