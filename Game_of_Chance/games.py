@@ -5,6 +5,12 @@ money = 100
 
 # Write your game of chance functions here
 def head_or_tails(bet, option):
+    """
+    This function determines if a person wins heads or tails game
+    :param bet: The amount user wants to bet
+    :param option: The outcome user predict
+    :return:
+    """
     global money
 
     options = {
@@ -31,6 +37,12 @@ def head_or_tails(bet, option):
 
 
 def cho_han(bet, option):
+    """
+    This function determines if a person wins at cho_han game
+    :param bet: The amount user wants to bet
+    :param option: The outcome user predict
+    :return:
+    """
     global money
 
     dice_one = random.randint(1, 6)
@@ -61,4 +73,4 @@ def cho_han(bet, option):
 
 # Call your game of chance functions here
 head_or_tails(10, "heads")
-cho_han(10,"even")
+cho_han(10, "even")
