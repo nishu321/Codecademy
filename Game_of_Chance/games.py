@@ -71,6 +71,45 @@ def cho_han(bet, option):
         print("New Balance: ${0}".format(money))
 
 
+def high_or_lower(bet):
+    """
+    This function determines if a person wins at high or low game
+    :param bet: The amount user wants to bet
+    :return:
+    """
+    global money
+
+    player = random.randint(2, 14)
+    house = random.randint(2, 14)
+
+    options = {
+        11: "J",
+        12: "Q",
+        13: "K",
+        14: "A"
+    }
+
+    print("Playing Higher or Lower")
+    print("Current Balance: ${0}".format(money))
+    print("Bet ${0}".format(bet))
+
+    if player > house:
+        print("Player's card: {0} House's card: {1}".format(options.get(player, player), options.get(house, house)))
+        print("You Won!")
+        money += bet
+        print("New Balance: ${0}".format(money))
+    elif player == house:
+        print("Player's card: {0} House's card: {1}".format(options.get(player, player), options.get(house, house)))
+        print("Tie")
+        print("New Balance: ${0}".format(money))
+    else:
+        print("Player's card: {0} House's card: {1}".format(options.get(player, player), options.get(house, house)))
+        print("You Lost!")
+        money -= bet
+        print("New Balance: ${0}".format(money))
+
+
 # Call your game of chance functions here
 head_or_tails(10, "heads")
 cho_han(10, "even")
+high_or_lower(10)
