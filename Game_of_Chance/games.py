@@ -109,7 +109,74 @@ def high_or_lower(bet):
         print("New Balance: ${0}".format(money))
 
 
+def roulette(bet, num_option=None, even_or_odd_option=None):
+    """
+    This function simulates a roulette game
+    :param bet: The amount user wants to bet
+    :param num_option: Roulette number player wants to bet on
+    :param even_or_odd_option: Roulette option player wants to bet on
+    :return:
+    """
+    global money
+
+    roulette_ball = random.randint(0, 37)
+
+    options = {
+        37: 00,
+        0: "Even",
+        1: "Odd"
+    }
+
+    roulette_value = []
+
+    if roulette_ball == 37:
+        roulette_value.append(options[roulette_ball])
+        roulette_value.append("00")
+    elif roulette_ball == 0:
+        roulette_value.append(roulette_ball)
+        roulette_value.append("0")
+    else:
+        roulette_value.append(roulette_ball)
+        roulette_value.append(options[roulette_ball % 2])
+
+    if num_option == None:
+        print("Playing Roulette")
+        print("Current Balance: ${0}".format(money))
+        print("Bet ${0} on {1}".format(bet, even_or_odd_option))
+
+        if roulette_value[1].lower() == even_or_odd_option.lower():
+            print("Roulette value: {0} {1} Player's value: {2}".format(roulette_value[0], roulette_value[1],
+                                                                       even_or_odd_option))
+            print("You Won!")
+            money += bet
+            print("New Balance: ${0}".format(money))
+        else:
+            print("Roulette value: {0} {1} Player's value: {2}".format(roulette_value[0], roulette_value[1],
+                                                                       even_or_odd_option))
+            print("You Lost!")
+            money -= bet
+            print("New Balance: ${0}".format(money))
+    else:
+        print("Playing Roulette")
+        print("Current Balance: ${0}".format(money))
+        print("Bet ${0} on {1}".format(bet, num_option))
+
+        if roulette_value[0] == num_option:
+            print(
+                "Roulette value: {0} {1} Player's value: {2}".format(roulette_value[0], roulette_value[1], num_option))
+            print("You Won!")
+            money += bet * 35
+            print("New Balance: ${0}".format(money))
+        else:
+            print(
+                "Roulette value: {0} {1} Player's value: {2}".format(roulette_value[0], roulette_value[1], num_option))
+            print("You Lost!")
+            money -= bet
+            print("New Balance: ${0}".format(money))
+
+
 # Call your game of chance functions here
 head_or_tails(10, "heads")
 cho_han(10, "even")
 high_or_lower(10)
+roulette(10,10)
